@@ -12,7 +12,7 @@ public class JavaGroupGameSpring2013 {
 	//Instance variables
 	static JFrame f;
 	static GamePlayerPanel p;
-	static int fWidth = 900, fHeight=700;
+	static int fWidth = 700, fHeight=900;
 	public static void main(String[] args) {
 		
 		//Start of the game, build a frame

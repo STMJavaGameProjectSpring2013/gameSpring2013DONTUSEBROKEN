@@ -9,9 +9,9 @@ import javax.swing.Timer;
 
 public class GamePlayerPanel extends JPanel implements ActionListener {
 
-
-	private static final long serialVersionUID = 1L;
-
+	/**
+	 This is the main game playing class
+	 */
 	
 	//Instance variables
 	private int panelW;
@@ -28,7 +28,7 @@ public class GamePlayerPanel extends JPanel implements ActionListener {
 		
 		testObject = new GameObject((int)(w/2), (int)(h/2));
 		testObject.setDX(3.0);
-		testObject.setDY(4.0);
+		//testObject.setDY(1.0);
 		
 		t= new Timer(20, this);
 		t.start();
@@ -58,7 +58,6 @@ public class GamePlayerPanel extends JPanel implements ActionListener {
 	public void checkBounds(){
 		
 		int rightFrame = 15;
-		int bottomFrame = 30;
 		if(testObject.getDX() < 0){
 			if(testObject.getXLoc()-(int)(testObject.getObjWidth()/2) < 0){
 				testObject.setXLoc(0);
@@ -83,8 +82,8 @@ public class GamePlayerPanel extends JPanel implements ActionListener {
 		
 		
 		if(testObject.getDY() > 0){
-			if(testObject.getYLoc()+(int)(testObject.getObjHeight()/2) > (panelH-bottomFrame)){
-				testObject.setYLoc(panelH-(int)(testObject.getObjHeight()/2)-bottomFrame);
+			if(testObject.getYLoc()+(int)(testObject.getObjHeight()/2) > panelH){
+				testObject.setXLoc(panelH-(int)(testObject.getObjHeight()/2));
 				testObject.setDY(testObject.getDY()*-1);
 			}
 		}
