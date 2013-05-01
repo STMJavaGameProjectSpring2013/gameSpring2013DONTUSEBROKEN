@@ -21,6 +21,8 @@ public class JavaGroupGameSpring2013 {
 		p = new GamePlayerPanel(700, 900);
 		f.add(p);
 		
+		
+		
 		f.setVisible(true);
 		
 
