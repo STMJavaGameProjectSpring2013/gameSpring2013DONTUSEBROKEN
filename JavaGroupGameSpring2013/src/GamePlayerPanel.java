@@ -19,6 +19,7 @@ public class GamePlayerPanel extends JPanel implements ActionListener {
 	private Color bColor;
 	
 	GameObject testObject;
+        DeachoObject decholol;
 	Timer t;
 	
 	public GamePlayerPanel(int w, int h){
@@ -29,7 +30,10 @@ public class GamePlayerPanel extends JPanel implements ActionListener {
 		testObject = new GameObject((int)(w/2), (int)(h/2));
 		testObject.setDX(3.0);
 		testObject.setDY(4.0);
-		
+                decholol=new DeachoObject(200,200);
+		decholol.setDX(9.0);
+                decholol.setDY(6.0);
+                
 		t= new Timer(20, this);
 		t.start();
 	}
@@ -40,7 +44,8 @@ public class GamePlayerPanel extends JPanel implements ActionListener {
 		g.setColor(bColor);
 		g.fillRect(0, 0, panelW, panelH);
 		
-		testObject.drawObject(g);	
+		testObject.drawObject(g);
+                decholol.drawObject(g);
 	}
 
 
@@ -48,6 +53,7 @@ public class GamePlayerPanel extends JPanel implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		testObject.moveObject();
+                decholol.moveObject();
 		checkBounds();
 		repaint();
 	
@@ -89,7 +95,35 @@ public class GamePlayerPanel extends JPanel implements ActionListener {
 			}
 		}
 		
+		if(decholol.getDX() < 0){
+			if(decholol.getXLoc()-(int)(decholol.getObjWidth()/2) < 0){
+				decholol.setXLoc(0);
+				decholol.setDX(decholol.getDX()*-1);
+			}
+		}
 		
+		if(decholol.getDX() > 0){
+			if((decholol.getXLoc()+(int)(decholol.getObjWidth()/2)) > (panelW-rightFrame)){
+				decholol.setXLoc(panelW-(int)(decholol.getObjWidth()/2)-rightFrame);
+				decholol.setDX(decholol.getDX()*-1);
+			}
+		}
+		
+		
+		if(decholol.getDY() < 0){
+			if(decholol.getYLoc()-(int)(decholol.getObjHeight()/2) < 0){
+				decholol.setYLoc(0);
+				decholol.setDY(decholol.getDY()*-1);
+			}
+		}
+		
+		
+		if(decholol.getDY() > 0){
+			if(decholol.getYLoc()+(int)(decholol.getObjHeight()/2) > (panelH-bottomFrame)){
+				decholol.setYLoc(panelH-(int)(decholol.getObjHeight()/2)-bottomFrame);
+				decholol.setDY(decholol.getDY()*-1);
+			}
+		}
 		
 		
 	}
